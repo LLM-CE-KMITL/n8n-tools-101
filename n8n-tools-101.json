@@ -1,0 +1,188 @@
+{
+  "name": "Example Tools 101",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b6927a1f-455a-499c-9fc9-52b8ccb6e066",
+      "name": "When chat message received",
+      "webhookId": "2c75174e-5970-46f1-a621-25ff6218b6a0"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        220,
+        0
+      ],
+      "id": "f4efe27c-94b9-45b0-b5a2-06c7558e8bed",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "llama3.2:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        180,
+        180
+      ],
+      "id": "151d741b-d55f-45a5-b87b-03fb53f7d749",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "2GPAoBu11wEZZ3CG",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "Steps to do Thai Noodle",
+        "url": "https://llm-ce-kmitl.github.io/n8n-tools-101/webtools/thai-noodle.md",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        500,
+        260
+      ],
+      "id": "2603bcf0-867a-4d5f-bff8-212fec121aa3",
+      "name": "Noodle"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Steps to do Okonomiyaki, or Japanese Pizza",
+        "url": "https://llm-ce-kmitl.github.io/n8n-tools-101/webtools/okonomiyaki.md",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        260
+      ],
+      "id": "3fee4526-f23a-4c8e-b0d2-3bc6d451cc3b",
+      "name": "Okonomiyaki"
+    },
+    {
+      "parameters": {
+        "toolDescription": "How to play Tic-Tac-Toe with 2 people",
+        "url": "https://llm-ce-kmitl.github.io/n8n-tools-101/webtools/tic-tac-toe.md",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        360,
+        260
+      ],
+      "id": "20f65378-a454-4044-a330-bc50f9886990",
+      "name": "Tic-Tac-Toe"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        820,
+        260
+      ],
+      "id": "9fa8c6de-7dcc-4ba7-9414-51001df48afd",
+      "name": "Calculator"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Noodle": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Okonomiyaki": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tic-Tac-Toe": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "a6bdf057-855a-4c57-bcf0-7f1153743e7a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "7196c0143cd2271bd7c04d1f32dd233d86a86adaca37ce6e116290ee1cb5d922"
+  },
+  "id": "0DVokQAzS3Fjfk5l",
+  "tags": []
+}
